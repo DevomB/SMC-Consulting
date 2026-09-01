@@ -15,12 +15,10 @@ export function ContributeInvite({ view }: { view: SiteView }) {
           </li>
         ))}
       </ul>
-      <Button href="/contribute" label={homeCopy.exploreContribute} variant="on-paper" />
-      {view.contributeCta ? (
-        <span style={{ marginLeft: "0.75rem" }}>
-          <Button {...view.contributeCta} variant="ghost-light" />
-        </span>
-      ) : null}
+      <div className="hero-actions">
+        <Button href="/contribute" label={homeCopy.exploreContribute} variant="on-paper" />
+        {view.contributeCta ? <Button {...view.contributeCta} variant="ghost-light" /> : null}
+      </div>
     </Section>
   );
 }

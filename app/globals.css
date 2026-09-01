@@ -23,13 +23,17 @@
   --text-body: 1.0625rem;
   --text-label: 0.8125rem;
   --max-content: 80rem;
-  --max-read: 45rem;
+  --max-read: 65ch;
   --gutter: clamp(1.25rem, 4vw, 4rem);
   --section-space: clamp(4.5rem, 10vw, 9rem);
   --radius: 0.5rem;
   --radius-media: 0.75rem;
   --shadow: 0 1rem 2.5rem rgb(7 17 31 / 0.18);
   --header-h: 4.5rem;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
   --ease: 180ms ease;
 }
 
@@ -41,6 +45,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 0.75rem + var(--safe-top));
+  overflow-x: clip;
 }
 
 html,
@@ -56,12 +62,24 @@ body {
   color: var(--ink-950);
   background: var(--paper-50);
   text-rendering: optimizeLegibility;
+  padding-inline: var(--safe-left) var(--safe-right);
+  overflow-x: clip;
 }
 
 img,
 svg {
   max-width: 100%;
+  height: auto;
   display: block;
+}
+
+h1,
+h2,
+h3,
+.section-title,
+.why-pull {
+  text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 a {
@@ -98,7 +116,7 @@ a {
 .skip-link {
   position: absolute;
   left: var(--gutter);
-  top: 0.75rem;
+  top: calc(0.75rem + var(--safe-top));
   z-index: 100;
   padding: 0.65rem 1rem;
   background: var(--white);
@@ -114,10 +132,15 @@ a {
 .container {
   width: min(100% - 2 * var(--gutter), var(--max-content));
   margin-inline: auto;
+  min-width: 0;
 }
 
 .section {
   padding-block: var(--section-space);
+}
+
+.section + .section:not(.final-cta) {
+  padding-top: 0;
 }
 
 .section-kicker {
@@ -245,6 +268,7 @@ a {
 .announcement {
   display: block;
   padding: 0.7rem var(--gutter);
+  padding-top: max(0.7rem, var(--safe-top));
   background: var(--ink-950);
   color: var(--paper-50);
   text-decoration: none;
@@ -260,7 +284,8 @@ a {
   position: sticky;
   top: 0;
   z-index: 50;
-  min-height: var(--header-h);
+  min-height: calc(var(--header-h) + var(--safe-top));
+  padding-top: var(--safe-top);
   display: flex;
   align-items: center;
   border-bottom: 1px solid transparent;
@@ -293,9 +318,11 @@ a {
   width: min(100% - 2 * var(--gutter), var(--max-content));
   margin-inline: auto;
   min-height: var(--header-h);
+  min-width: 0;
 }
 
 .wordmark {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: baseline;
   gap: 0.35rem;
@@ -324,10 +351,11 @@ a {
 .nav-desktop {
   display: none;
   align-items: center;
-  gap: 1.35rem;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  min-width: 0;
 }
 
 .nav-desktop a {
@@ -387,10 +415,10 @@ a {
 
 .mobile-nav-sheet {
   position: fixed;
-  inset: var(--header-h) 0 0;
+  inset: calc(var(--header-h) + var(--safe-top)) 0 0;
   background: var(--paper-50);
   color: var(--ink-950);
-  padding: 1.5rem var(--gutter) 2.5rem;
+  padding: 1.5rem var(--gutter) max(2.5rem, var(--safe-bottom));
   overflow: auto;
   z-index: 40;
   display: grid;
@@ -411,13 +439,17 @@ a {
 .hero {
   background: var(--ink-950);
   color: var(--paper-50);
-  padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(4rem, 10vw, 7.5rem);
+  padding: clamp(2.5rem, 5.5vw, 5rem) 0 clamp(3rem, 7vw, 6rem);
 }
 
 .hero-grid {
   display: grid;
-  gap: 3rem;
+  gap: 2.5rem;
   align-items: center;
+}
+
+.hero-grid > * {
+  min-width: 0;
 }
 
 .hero-eyebrow {
@@ -455,6 +487,15 @@ a {
   margin-bottom: 1.25rem;
 }
 
+.hero-actions .btn {
+  max-width: 100%;
+}
+
+.section .hero-actions {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
 .hero-support {
   margin: 0;
   font-size: 0.9375rem;
@@ -462,7 +503,8 @@ a {
 }
 
 .pathways {
-  width: min(100%, 32rem);
+  width: 100%;
+  max-width: 32rem;
   margin-inline: auto;
   --nx: 0px;
   --ny: 0px;
@@ -471,7 +513,7 @@ a {
 .pathways svg {
   width: 100%;
   height: auto;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .path-line {
@@ -541,7 +583,7 @@ a {
 
 .why-pull {
   margin: 0;
-  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-size: clamp(2.5rem, 6.5vw, 4.25rem);
   line-height: 1.02;
   letter-spacing: -0.035em;
   font-weight: 700;
@@ -552,11 +594,15 @@ a {
   display: grid;
   gap: 1.5rem;
   position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .loop-step {
   padding-top: 1rem;
   border-top: 1px solid var(--line-200);
+  min-width: 0;
 }
 
 .loop-step strong {
@@ -579,8 +625,9 @@ a {
 }
 
 .focus-cell {
-  padding: 1.5rem 1.25rem 1.5rem 0;
+  padding: 1.5rem 0;
   border-bottom: 1px solid var(--line-200);
+  min-width: 0;
 }
 
 .focus-cell h3 {
@@ -592,6 +639,7 @@ a {
 .focus-cell p {
   margin: 0;
   color: var(--ink-800);
+  max-width: 38ch;
 }
 
 .program-list {
@@ -604,6 +652,7 @@ a {
 .program-card {
   background: var(--paper-50);
   padding: 1.75rem 1.5rem;
+  min-width: 0;
 }
 
 .status-pill {
@@ -643,7 +692,7 @@ a {
 
 .event-meta div {
   display: grid;
-  grid-template-columns: 6.5rem 1fr;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: 0.75rem;
 }
 
@@ -694,6 +743,10 @@ a {
   margin: 1.5rem 0;
 }
 
+.join-paths article {
+  min-width: 0;
+}
+
 .join-paths h3 {
   margin: 0 0 0.4rem;
   font-size: 1.05rem;
@@ -713,16 +766,20 @@ a {
   display: grid;
   gap: 0;
   margin: 2rem 0 1.5rem;
+  padding: 0;
 }
 
 .contribute-options li {
   list-style: none;
   padding: 1rem 0;
   border-top: 1px solid var(--line-200);
+  min-width: 0;
 }
 
-.contribute-options {
-  padding: 0;
+.contribute-options p {
+  margin: 0.35rem 0 0;
+  max-width: var(--max-read);
+  color: var(--ink-800);
 }
 
 .faq-list {
@@ -747,6 +804,7 @@ a {
   padding: 1.1rem 0;
   font-weight: 650;
   font-size: 1.05rem;
+  text-wrap: pretty;
 }
 
 .faq-list summary::-webkit-details-marker {
@@ -783,6 +841,10 @@ a {
 .footer-grid {
   display: grid;
   gap: 1.5rem;
+}
+
+.footer-grid > * {
+  min-width: 0;
 }
 
 .footer-brand {
@@ -826,18 +888,14 @@ a {
 }
 
 @media (min-width: 640px) {
-  .hero-grid,
-  .why-grid,
-  .culture-join,
-  .event-panel,
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 3rem;
     align-items: start;
   }
 
   .focus-matrix {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
   .focus-cell:nth-child(odd) {
@@ -845,14 +903,15 @@ a {
     border-right: 1px solid var(--line-200);
   }
 
-  .value-loop {
-    grid-template-columns: 1fr 1fr;
+  .focus-cell:nth-child(even) {
+    padding-left: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .nav-desktop {
     display: flex;
+    gap: 1.25rem;
   }
 
   .nav-fallback,
@@ -865,8 +924,21 @@ a {
     gap: 4rem;
   }
 
+  .pathways {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .why-grid,
+  .culture-join,
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+
   .value-loop {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1.25rem;
   }
 
@@ -885,12 +957,16 @@ a {
     padding-top: 1.25rem;
   }
 
+  .loop-step p {
+    font-size: 0.9375rem;
+  }
+
   .focus-matrix {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .focus-cell {
-    padding: 1.75rem 1.5rem 1.75rem 0;
+    padding: 1.75rem 1.25rem 1.75rem 0;
     border-right: 1px solid var(--line-200);
   }
 
@@ -898,24 +974,49 @@ a {
     border-right: 1px solid var(--line-200);
   }
 
+  .focus-cell:nth-child(even) {
+    padding-left: 0;
+  }
+
   .focus-cell:last-child {
     border-right: 0;
     padding-right: 0;
   }
 
-  .program-list {
-    grid-template-columns: repeat(3, 1fr);
+  .program-list:has(> :nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .contribute-options {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.25rem;
+  .program-list:has(> :nth-child(3)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .event-panel:has(> :nth-child(2)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .event-panel:has(> :nth-child(3)) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .join-paths {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+  }
+
+  .join-paths article {
+    padding-top: 1rem;
     border-top: 1px solid var(--line-200);
   }
 
-  .contribute-options li {
+  .culture-join .join-paths {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .culture-join .join-paths article {
+    padding-top: 0;
     border-top: 0;
-    padding: 1.25rem 1rem 0 0;
   }
 }
 

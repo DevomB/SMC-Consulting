@@ -27,11 +27,11 @@ This file owns exact public wording and conditional copy. `LAUNCH_INPUTS.md` cho
 
 > SMC is a student-led initiative with recognition details under review. It is not represented here as a currently recognized university organization.
 
-`recognized` descriptor, only after exact wording is approved:
+`recognized` descriptor (selected in `LAUNCH_INPUTS.md`):
 
 > A student-led technical collective at San José State University
 
-`recognized` disclosure, only after exact wording is approved:
+`recognized` disclosure (selected in `LAUNCH_INPUTS.md`):
 
 > SMC is a student-led Recognized Student Organization at San José State University. Recognition does not imply university endorsement of every statement or activity on this site.
 
@@ -43,7 +43,7 @@ This file owns exact public wording and conditional copy. `LAUNCH_INPUTS.md` cho
 
 > SMC is not represented here as an active Recognized Student Organization. Public campus-affiliation claims and activities remain paused pending guidance.
 
-These are conservative draft variants, not approval from SJSU. Production remains blocked until the exact selected descriptor and disclosure are recorded in `LAUNCH_INPUTS.md`.
+The `recognized` descriptor and disclosure are the selected public wording in `LAUNCH_INPUTS.md`. Remaining variants stay unused. These lines are not SJSU mark permission or project endorsement. Production remains blocked by other launch gates.
 
 ### Primary headline
 
@@ -558,7 +558,7 @@ Unconfirmed schedule:
 
 ### Is SMC officially affiliated with SJSU?
 
-`recognized` answer, only after written confirmation and copy approval:
+`recognized` answer (selected in `LAUNCH_INPUTS.md`):
 
 > SMC is a student-led Recognized Student Organization at San José State University. Recognition does not imply university endorsement of every statement or activity on this site.
 
@@ -707,7 +707,7 @@ Neutral description:
 
 > A technical community being built by San José State students around serious work in software, AI/ML, quantitative finance, and applied mathematics.
 
-Recognized-state description, only after approval:
+Recognized-state description (selected in `LAUNCH_INPUTS.md`):
 
 > An SJSU student-led technical collective for building skills, projects, and lasting relationships across software, AI/ML, quantitative finance, and applied mathematics.
 

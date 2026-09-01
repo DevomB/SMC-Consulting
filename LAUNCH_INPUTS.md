@@ -15,10 +15,10 @@ An implementation may render a neutral, noindexed preview while this file is inc
 | Public display name | `SMC` as a working preview mark | PROVISIONAL | Executive approval |
 | Expanded public name | None | UNSET | Executive decision + Student Involvement naming review |
 | Organization model | None | UNSET | Existing RSO, program, rename, or new RSO decision |
-| Recognition state | `unknown` | UNSET | Written current status from Student Involvement |
+| Recognition state | `recognized` | CONFIRMED | Officer confirmation that SMC is an official RSO |
 | Recognition valid through | None | UNSET | Recognition letter/record |
-| Approved campus descriptor | None | UNSET | Student Involvement/brand guidance |
-| Approved affiliation disclaimer | None | UNSET | Student Involvement/brand guidance |
+| Approved campus descriptor | `A student-led technical collective at San José State University` | SELECTED | CONTENT.md recognized descriptor |
+| Approved affiliation disclaimer | `SMC is a student-led Recognized Student Organization at San José State University. Recognition does not imply university endorsement of every statement or activity on this site.` | SELECTED | CONTENT.md recognized disclosure |
 | Open-membership/project-role model | Proposed only | UNSET | Constitution + Student Involvement confirmation |
 | Officer-selection language | Constitution governs | UNSET | Approved current constitution |
 | SJSU name/mark permission | None | UNSET | Written guidance/permission as applicable |
@@ -31,7 +31,7 @@ Recognition state must be one of:
 - `recognized` — written recognition is current for the academic year;
 - `inactive` — recognition is lapsed, denied, suspended, or otherwise not current.
 
-The website may use only copy approved for the recorded state. Production remains blocked until the campus descriptor and disclaimer are approved even if the state is known.
+The website may use only copy approved for the recorded state. Descriptor and affiliation disclaimer for `recognized` are selected above. Production remains blocked by remaining UNSET gates (email, Sammy, naming, hosting, and related items). Recognition does not grant university endorsement of projects or permission to use SJSU marks.
 
 ## 2. Required public destinations
 

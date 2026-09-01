@@ -11,16 +11,29 @@ export default function PrivacyPage() {
   const paragraphs = privacyParagraphs(site);
 
   return (
-    <main id="content" className="privacy-article">
-      <Container>
-        <h1>{legalCopy.privacyTitle}</h1>
-        {paragraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-        {site.privacyUpdatedOn ? (
-          <p className="privacy-updated">Last updated {site.privacyUpdatedOn}.</p>
-        ) : null}
-      </Container>
+    <main id="content">
+      <section className="hero surface-ink page-hero">
+        <Container>
+          <div className="hero-grid">
+            <div>
+              <p className="hero-eyebrow">Privacy</p>
+              <h1>{legalCopy.privacyTitle}</h1>
+            </div>
+          </div>
+        </Container>
+      </section>
+      <section className="section">
+        <Container>
+          <div className="privacy-copy">
+            {paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            {site.privacyUpdatedOn ? (
+              <p className="privacy-updated">Last updated {site.privacyUpdatedOn}.</p>
+            ) : null}
+          </div>
+        </Container>
+      </section>
     </main>
   );
 }

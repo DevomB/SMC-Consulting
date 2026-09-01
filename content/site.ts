@@ -9,10 +9,10 @@ export const site: SiteConfig = {
   mode: "scaffold",
   displayName: "SMC",
   descriptor:
-    "A technical community being built by San José State students",
+    "A student-led technical collective at San José State University",
   disclosure:
-    "SMC is an independent student-led initiative being developed by San José State students. Its university recognition and public naming status have not been confirmed.",
-  recognitionState: "unknown",
+    "SMC is a student-led Recognized Student Organization at San José State University. Recognition does not imply university endorsement of every statement or activity on this site.",
+  recognitionState: "recognized",
   events: [],
   projectApplications: { state: "unavailable" },
   programs: [],

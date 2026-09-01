@@ -1,7 +1,7 @@
 import type { RecognitionState, SiteConfig } from "@/lib/site-types";
 
 export const homeCopy = {
-  eyebrow: "A technical community being built by San José State students",
+  eyebrow: "A student-led technical collective at San José State University",
   headline: "Ambition compounds here.",
   body: "SMC brings driven students together to solve hard problems, build work worth showing, and help one another pursue careers in software, machine learning, quantitative finance, and beyond.",
   supporting: "Rooted in mathematics. Open to serious builders across disciplines.",
@@ -117,7 +117,7 @@ export const homeCopy = {
   metadata: {
     title: "SMC — Ambition compounds here",
     description:
-      "A technical community being built by San José State students around serious work in software, AI/ML, quantitative finance, and applied mathematics.",
+      "An SJSU student-led technical collective for building skills, projects, and lasting relationships across software, AI/ML, quantitative finance, and applied mathematics.",
   },
 } as const;
 

@@ -1,10 +1,16 @@
+.page-hero {
+  padding-block: clamp(2.5rem, 5vw, 4.5rem);
+}
+
 .page-hero h1 {
   font-size: var(--text-h1);
-  max-width: 14ch;
+  max-width: 18ch;
+  line-height: 1.05;
 }
 
 .page-hero .hero-grid {
   max-width: 42rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 @media (min-width: 1024px) {
@@ -96,21 +102,12 @@
   margin-top: 0.85rem;
 }
 
-.privacy-article {
-  padding-block: var(--section-space);
-}
-
-.privacy-article h1 {
-  margin: 0 0 1.5rem;
-  font-size: var(--text-h1);
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-  max-width: 12ch;
-}
-
-.privacy-article p {
-  margin: 0 0 1.15rem;
+.privacy-copy {
   max-width: var(--max-read);
+}
+
+.privacy-copy p {
+  margin: 0 0 1.15rem;
   color: var(--ink-800);
 }
 

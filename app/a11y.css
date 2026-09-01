@@ -24,8 +24,12 @@
 #join,
 #contribute,
 #faq,
-#programs {
-  scroll-margin-top: calc(var(--header-h) + 0.75rem);
+#programs,
+#focus,
+#next,
+#next-session,
+#contact {
+  scroll-margin-top: calc(var(--header-h) + 0.75rem + var(--safe-top));
 }
 
 .js .nav-fallback {

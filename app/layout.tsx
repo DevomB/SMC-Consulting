@@ -1,3 +1,5 @@
+import type { Viewport } from "next";
+import type { ReactNode } from "react";
 import { AnnouncementBar } from "@/components/home/announcement-bar";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -8,7 +10,6 @@ import { ibmPlexMono, manrope } from "@/lib/fonts";
 import { rootMetadata } from "@/lib/seo";
 import { buildView } from "@/lib/site";
 import { validateSite } from "@/lib/utils";
-import type { ReactNode } from "react";
 import "./globals.css";
 
 validateSite(site);
@@ -16,6 +17,10 @@ validateSite(site);
 const view = buildView();
 
 export const metadata = rootMetadata();
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
