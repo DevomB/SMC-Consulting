@@ -46,7 +46,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 0.75rem + var(--safe-top));
-  overflow-x: clip;
 }
 
 html,
@@ -63,7 +62,6 @@ body {
   background: var(--paper-50);
   text-rendering: optimizeLegibility;
   padding-inline: var(--safe-left) var(--safe-right);
-  overflow-x: clip;
 }
 
 img,
@@ -133,6 +131,10 @@ a {
   width: min(100% - 2 * var(--gutter), var(--max-content));
   margin-inline: auto;
   min-width: 0;
+}
+
+#content {
+  overflow-x: clip;
 }
 
 .section {
@@ -415,7 +417,10 @@ a {
 
 .mobile-nav-sheet {
   position: fixed;
-  inset: calc(var(--header-h) + var(--safe-top)) 0 0;
+  top: calc(var(--header-h) + var(--safe-top));
+  right: 0;
+  bottom: 0;
+  left: 0;
   background: var(--paper-50);
   color: var(--ink-950);
   padding: 1.5rem var(--gutter) max(2.5rem, var(--safe-bottom));
