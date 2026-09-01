@@ -1,0 +1,17 @@
+# Local operating material contains names, assignments, and outreach targets.
+internal/
+
+# Common generated/local files for the future website implementation.
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+dist/
+.astro/
+.next/
+out/
+coverage/
+.tectonix/
+*.tsbuildinfo
